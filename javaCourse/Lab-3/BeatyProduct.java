@@ -31,7 +31,7 @@ public class BeatyProduct {
 
     @Override
     public String toString() {
-        return type+" {" +
+        return type + " {" +
                 "name='" + name + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +

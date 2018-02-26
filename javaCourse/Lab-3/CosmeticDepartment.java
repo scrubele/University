@@ -9,39 +9,39 @@ public class CosmeticDepartment {
     private String addressOfShop;
     private int floor;
     private List<BeatyProduct> productList;
-    private List<BeatyProduct> avialableForCustomerList; // List for customer
 
     public CosmeticDepartment(String name, String addressOfShop, int floor) {
         this.name = name;
         this.addressOfShop = addressOfShop;
         this.floor = floor;
         this.productList = new LinkedList<>();
-        this.avialableForCustomerList = new LinkedList<>();
     }
 
     public void addProduct(BeatyProduct beatyProduct) {
         productList.add(beatyProduct);
     }
 
-    public void displayProduct() {
+    public void displayProducts(List<BeatyProduct> productList) {
+        productList.sort(Comparator.comparing(BeatyProduct::getPrice).reversed());
         System.out.println("We can offer you:");
-        for (BeatyProduct i : productList) {
-            System.out.println(i.toString());
+        for (BeatyProduct product : productList) {
+            System.out.println(product.toString());
         }
         System.out.println();
     }
 
 
-    public void displayAvailableProduct(int count, double money) {
-        int k = 0;
+    public List<BeatyProduct> findAvailableProducts(boolean choice, double money) {
+        List<BeatyProduct> avialableForCustomerProducts = new LinkedList<>();
+        int countOfProducts = 0;
         double sum = 0;
-        if (count == 1) {
+        if (choice == true) {
             productList.sort(Comparator.comparing(BeatyProduct::getPrice).reversed());
 
-            for (BeatyProduct i : productList) {
-                if ((i.getQuantity() > 0) && (i.getPrice() <= money)) {
-                    System.out.println(i.toString());
-                    k++;
+            for (BeatyProduct product : productList) {
+                if ((product.getQuantity() > 0) && (product.getPrice() <= money)) {
+                    avialableForCustomerProducts.add(product);
+                    countOfProducts++;
                 }
             }
 
@@ -49,27 +49,22 @@ public class CosmeticDepartment {
 
             productList.sort(Comparator.comparing(BeatyProduct::getPrice));
             while (sum < money) {
-                for (BeatyProduct i : productList) {
-                    if (i.getQuantity() > 0)   sum += i.getPrice();
-                    if(sum<money) {
-                        avialableForCustomerList.add(i);
-                        k++;
+                for (BeatyProduct product : productList) {
+                    if (product.getQuantity() > 0) sum += product.getPrice();
+                    if (sum < money) {
+                        avialableForCustomerProducts.add(product);
+                        countOfProducts++;
                     }
                 }
             }
-            if (k > 0) {
-                System.out.println("You can buy:");
-                avialableForCustomerList.sort(Comparator.comparing(BeatyProduct::getPrice).reversed());
-                for (BeatyProduct i : avialableForCustomerList) {
-                    System.out.println(i.toString());
-                }
-            }
-
-
         }
-        if (k == 0) {
+
+        if (countOfProducts > 0) {
+            displayProducts(avialableForCustomerProducts);
+        } else {
             System.out.println("Ohh, no... You can not buy any product. Sorry :(");
         }
+        return avialableForCustomerProducts;
     }
 
     @Override
@@ -78,8 +73,10 @@ public class CosmeticDepartment {
                 "name='" + name + '\'' +
                 ", addressOfShop='" + addressOfShop + '\'' +
                 ", floor=" + floor +
-                ", productList=" + productList +
-                ", avialableForCustomerList=" + avialableForCustomerList +
-                '}';
+                ", productList=" + productList;
+    }
+
+    public List<BeatyProduct> getProductList() {
+        return productList;
     }
 }
