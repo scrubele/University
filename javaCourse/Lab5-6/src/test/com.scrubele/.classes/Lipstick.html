@@ -1,0 +1,142 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Lipstick</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.scrubele</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Lipstick (com.scrubele)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Lipstick</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/ 14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.scrubele;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.Objects;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;public class Lipstick extends BeatyProduct {
+<i>6</i>&nbsp;    private LipstickTaste taste;
+<b class="fc"><i>7</i>&nbsp;    private int colorCode;</b>
+<b class="fc"><i>8</i>&nbsp;</b>
+<i>9</i>&nbsp;    public Lipstick() {
+<i>10</i>&nbsp;    }
+<b class="fc"><i>11</i>&nbsp;</b>
+<b class="fc"><i>12</i>&nbsp;    public Lipstick(String name, Double price, ProductType type, int quantity, LipstickTaste newTaste, int newColorCode) {</b>
+<b class="fc"><i>13</i>&nbsp;        super(name, price, type, quantity);</b>
+<i>14</i>&nbsp;        this.taste = newTaste;
+<b class="fc"><i>15</i>&nbsp;        this.colorCode = newColorCode;</b>
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    }
+<i>18</i>&nbsp;
+<b class="fc"><i>19</i>&nbsp;    @Override</b>
+<b class="fc"><i>20</i>&nbsp;    public String toString() {</b>
+<i>21</i>&nbsp;        return  getType()+&quot; { name=&quot; + getName() +
+<i>22</i>&nbsp;                &quot;, price =&quot; + getPrice() +
+<i>23</i>&nbsp;                &quot;, taste=&quot; + taste +
+<i>24</i>&nbsp;                &quot;, colorCode=&quot; + colorCode +
+<i>25</i>&nbsp;                &#39;}&#39;;
+<i>26</i>&nbsp;    }
+<b class="fc"><i>27</i>&nbsp;</b>
+<b class="fc"><i>28</i>&nbsp;    public void setTaste(LipstickTaste taste) {</b>
+<i>29</i>&nbsp;        this.taste = taste;
+<i>30</i>&nbsp;    }
+<b class="fc"><i>31</i>&nbsp;</b>
+<b class="fc"><i>32</i>&nbsp;    public void setColorCode(int colorCode) {</b>
+<i>33</i>&nbsp;        this.colorCode = colorCode;
+<i>34</i>&nbsp;    }
+<b class="fc"><i>35</i>&nbsp;</b>
+<i>36</i>&nbsp;    public LipstickTaste getTaste() {
+<i>37</i>&nbsp;        return taste;
+<i>38</i>&nbsp;    }
+<b class="fc"><i>39</i>&nbsp;</b>
+<i>40</i>&nbsp;    public int getColorCode() {
+<i>41</i>&nbsp;        return colorCode;
+<i>42</i>&nbsp;    }
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    @Override
+<i>45</i>&nbsp;    public boolean equals(Object o) {
+<i>46</i>&nbsp;        if (this == o) return true;
+<i>47</i>&nbsp;        if (o == null || getClass() != o.getClass()) return false;
+<i>48</i>&nbsp;        if (!super.equals(o)) return false;
+<i>49</i>&nbsp;        Lipstick lipstick = (Lipstick) o;
+<i>50</i>&nbsp;        return colorCode == lipstick.colorCode &amp;&amp;
+<i>51</i>&nbsp;                taste == lipstick.taste;
+<i>52</i>&nbsp;    }
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;    @Override
+<i>55</i>&nbsp;    public int hashCode() {
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;        return Objects.hash(super.hashCode(), taste, colorCode);
+<i>58</i>&nbsp;    }
+<i>59</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-03-07 13:24</div>
+</div>
+</body>
+</html>
