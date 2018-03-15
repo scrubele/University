@@ -75,4 +75,23 @@ public class BeatyProduct {
 
         return Objects.hash(name, price, type, quantity);
     }
+
+    public String getHeaders() {
+        return "name,price,type,quantity";
+    }
+    private static final String COMMA_DELIMITER = ",";
+
+    public String toCSV() {
+        StringBuilder string = new StringBuilder();
+        string.append(this.getName());
+        string.append(COMMA_DELIMITER);
+        string.append(String.valueOf(this.getPrice()));
+        string.append(COMMA_DELIMITER);
+        string.append(String.valueOf(this.getType().toString()));
+        string.append(COMMA_DELIMITER);
+        string.append(String.valueOf(this.getQuantity()));
+
+
+        return string.toString();
+    }
 }

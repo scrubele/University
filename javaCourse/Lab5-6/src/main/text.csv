@@ -1,0 +1,14 @@
+name,price,type,quantity
+Black,350.0,MASCARA,125
+name,price,type,quantity,taste,colorCode
+Super100,125.35,LIPSTICK,15,COCONUT,567892
+name,price,type,quantity
+Beet,35.0,BLUSH,13
+name,price,type,quantity,hairType,capasity
+Super100,198.99,HAIRCONDITIONERS,3,WAVY,1000
+name,price,type,quantity
+Love,100.5,GEL,2
+name,price,type,quantity
+Tiger,15.25,EYELINER,115
+name,price,type,quantity,taste,colorCode
+Funny,428.35,LIPSTICK,35,LEMON,123487

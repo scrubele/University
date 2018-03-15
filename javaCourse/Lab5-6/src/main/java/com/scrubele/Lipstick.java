@@ -18,7 +18,7 @@ public class Lipstick extends BeatyProduct {
 
     @Override
     public String toString() {
-        return  getType()+" { name=" + getName() +
+        return getType() + " { name=" + getName() +
                 ", price =" + getPrice() +
                 ", taste=" + taste +
                 ", colorCode=" + colorCode +
@@ -55,5 +55,23 @@ public class Lipstick extends BeatyProduct {
     public int hashCode() {
 
         return Objects.hash(super.hashCode(), taste, colorCode);
+    }
+
+    @Override
+    public String getHeaders() {
+        return super.getHeaders() + ",taste,colorCode";
+    }
+
+    private static final String COMMA_DELIMITER = ",";
+
+
+    public String toCSV() {
+        StringBuilder string = new StringBuilder();
+        string.append(super.toCSV());
+        string.append(COMMA_DELIMITER);
+        string.append(String.valueOf(this.getTaste()));
+        string.append(COMMA_DELIMITER);
+        string.append(String.valueOf(this.getColorCode()));
+        return string.toString();
     }
 }

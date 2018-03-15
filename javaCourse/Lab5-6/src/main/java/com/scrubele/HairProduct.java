@@ -39,4 +39,19 @@ public class HairProduct extends BeatyProduct {
     public void setCapasity(int capasity) {
         this.capasity = capasity;
     }
+
+    @Override
+    public String getHeaders(){
+        return super.getHeaders()+",hairType,capasity";
+    }
+    private static final String COMMA_DELIMITER = ",";
+    public String toCSV() {
+        StringBuilder string = new StringBuilder();
+        string.append(super.toCSV());
+        string.append(COMMA_DELIMITER);
+        string.append(String.valueOf(this.getHair()));
+        string.append(COMMA_DELIMITER);
+        string.append(String.valueOf(this.getCapasity()));
+        return string.toString();
+    }
 }

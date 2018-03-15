@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import static java.util.Arrays.asList;
 
+import java.io.IOException;
 import java.util.*;
 
 public class CosmeticDepartmentTest {
@@ -57,16 +58,7 @@ public class CosmeticDepartmentTest {
 
     @Test
     public void findAvailableProductsTest1() {
-        CosmeticDepartment shop = new CosmeticDepartment("Watsons", "Stryjska,135", 5);
-
-        shop.addProduct(new BeatyProduct("Black", 350.0, ProductType.MASCARA, 125));
-        shop.addProduct(new Lipstick("Super100", 125.35, ProductType.LIPSTICK, 15,
-                LipstickTaste.COCONUT, 567892));
-        shop.addProduct(new BeatyProduct("Beet", 35.0, ProductType.BLUSH, 13));
-        shop.addProduct(new HairProduct("Super100", 198.99, ProductType.HAIRCONDITIONERS, 3,
-                HairType.WAVY, 1000));
-        shop.addProduct(new BeatyProduct("Love", 100.50, ProductType.GEL, 2));
-        shop.addProduct(new BeatyProduct("Tiger", 15.25, ProductType.EYELINER, 115));
+        CosmeticDepartment shop = getCosmeticDepartment();
 
         List<BeatyProduct> list = new LinkedList<>();
         list.add(new BeatyProduct("Love", 100.50, ProductType.GEL, 2));
@@ -82,16 +74,7 @@ public class CosmeticDepartmentTest {
 
     @Test
     public void findAvailableProductsTest2() {
-        CosmeticDepartment shop = new CosmeticDepartment("Watsons", "Stryjska,135", 5);
-
-        shop.addProduct(new BeatyProduct("Black", 350.0, ProductType.MASCARA, 125));
-        shop.addProduct(new Lipstick("Super100", 125.35, ProductType.LIPSTICK, 15,
-                LipstickTaste.COCONUT, 567892));
-        shop.addProduct(new BeatyProduct("Beet", 35.0, ProductType.BLUSH, 13));
-        shop.addProduct(new HairProduct("Super100", 198.99, ProductType.HAIRCONDITIONERS, 3,
-                HairType.WAVY, 1000));
-        shop.addProduct(new BeatyProduct("Love", 100.50, ProductType.GEL, 2));
-        shop.addProduct(new BeatyProduct("Tiger", 15.25, ProductType.EYELINER, 115));
+        CosmeticDepartment shop = getCosmeticDepartment();
 
         List<BeatyProduct> list = new LinkedList<>();
         list.add(new BeatyProduct("Beet", 35.0, ProductType.BLUSH, 13));
@@ -106,16 +89,7 @@ public class CosmeticDepartmentTest {
 
     @Test
     public void findAvailableProductsTest3() {
-        CosmeticDepartment shop = new CosmeticDepartment("Watsons", "Stryjska,135", 5);
-
-        shop.addProduct(new BeatyProduct("Black", 350.0, ProductType.MASCARA, 125));
-        shop.addProduct(new Lipstick("Super100", 125.35, ProductType.LIPSTICK, 15,
-                LipstickTaste.COCONUT, 567892));
-        shop.addProduct(new BeatyProduct("Beet", 35.0, ProductType.BLUSH, 13));
-        shop.addProduct(new HairProduct("Super100", 198.99, ProductType.HAIRCONDITIONERS, 3,
-                HairType.WAVY, 1000));
-        shop.addProduct(new BeatyProduct("Love", 100.50, ProductType.GEL, 2));
-        shop.addProduct(new BeatyProduct("Tiger", 15.25, ProductType.EYELINER, 115));
+        CosmeticDepartment shop = getCosmeticDepartment();
 
         List<BeatyProduct> list = new LinkedList<>();
 
@@ -124,6 +98,20 @@ public class CosmeticDepartmentTest {
         List<BeatyProduct> avialableForCustomerProducts = shop.findAvailableProducts(choice, money);
 
         Assert.assertThat(avialableForCustomerProducts, Is.is(list));
+    }
+
+    private CosmeticDepartment getCosmeticDepartment() {
+        cosmeticDepartment = new CosmeticDepartment("Watsons", "Stryjska,135", 5);
+
+        cosmeticDepartment.addProduct(new BeatyProduct("Black", 350.0, ProductType.MASCARA, 125));
+        cosmeticDepartment.addProduct(new Lipstick("Super100", 125.35, ProductType.LIPSTICK, 15,
+                LipstickTaste.COCONUT, 567892));
+        cosmeticDepartment.addProduct(new BeatyProduct("Beet", 35.0, ProductType.BLUSH, 13));
+        cosmeticDepartment.addProduct(new HairProduct("Super100", 198.99, ProductType.HAIRCONDITIONERS, 3,
+                HairType.WAVY, 1000));
+        cosmeticDepartment.addProduct(new BeatyProduct("Love", 100.50, ProductType.GEL, 2));
+        cosmeticDepartment.addProduct(new BeatyProduct("Tiger", 15.25, ProductType.EYELINER, 115));
+        return cosmeticDepartment;
     }
 
     @Test
@@ -174,5 +162,15 @@ public class CosmeticDepartmentTest {
         Assert.assertTrue(this.cosmeticDepartment.getProductList().contains(beaty));
     }
 
+    @Test
+    public void testWriter() throws IOException {
+        CosmeticDepartment shop = getCosmeticDepartment();
+
+        Writer writer= new Writer();
+        writer.writeToFile(shop);
+        List<BeatyProduct> productList = new LinkedList<>();
+        productList= writer.readCsvFile(ProductType.LIPSTICK);
+        Assert.assertTrue(productList.size()>0);
+    }
 
 }

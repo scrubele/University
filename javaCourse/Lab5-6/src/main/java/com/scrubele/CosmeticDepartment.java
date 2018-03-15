@@ -1,5 +1,7 @@
 package com.scrubele;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -112,5 +114,6 @@ public class CosmeticDepartment {
     public List<BeatyProduct> getProductList() {
         return productList;
     }
+
 
 }
