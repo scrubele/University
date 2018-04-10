@@ -77,7 +77,7 @@ public class Writer {
                                         Integer.parseInt(tokens[BEATY_PRODUCT_QUANTITY]),
                                         LipstickTaste.valueOf(tokens[BEATY_PRODUCT_TASTE]),
                                         Integer.parseInt(tokens[BEATY_PRODUCT_COLORCODE]));
-nb                              } else if (tokens[BEATY_PRODUCT_TYPE] == "HAIRCONDITIONERS") {
+                              } else if (tokens[BEATY_PRODUCT_TYPE] == "HAIRCONDITIONERS") {
                                 HairProduct hairProduct = new HairProduct(tokens[BEATY_PRODUCT_NAME],
                                         Double.parseDouble(tokens[BEATY_PRODUCT_PRICE]),
                                         ProductType.valueOf(tokens[BEATY_PRODUCT_TYPE]),

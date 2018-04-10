@@ -3,12 +3,20 @@ package com.scrubele;
 import java.util.Objects;
 
 public class BeatyProduct {
+    private int id;
     private String name;
     private Double price;
     private ProductType type;
     private int quantity;
 
-    BeatyProduct() {
+    public BeatyProduct() {
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id=id;
     }
 
     public final void setName(String newName) {
