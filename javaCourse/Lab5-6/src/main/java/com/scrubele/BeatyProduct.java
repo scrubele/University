@@ -1,12 +1,24 @@
 package com.scrubele;
 
+import javax.persistence.*;
 import java.util.Objects;
-
+@Entity
 public class BeatyProduct {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "beautyproduct_id")
     private int id;
+
+    @Column(name = "beautyproduct_name")
     private String name;
+
+    @Column(name = "beautyproduct_price")
     private Double price;
+
+    @Column(name = "beautyproduct_type")
     private ProductType type;
+
+    @Column(name = "beautyproduct_quantity  ")
     private int quantity;
 
     public BeatyProduct() {

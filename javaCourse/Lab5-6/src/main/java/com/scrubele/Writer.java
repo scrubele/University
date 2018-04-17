@@ -68,7 +68,7 @@ public class Writer {
                     try {
                         product = ProductType.valueOf(tokens[BEATY_PRODUCT_TYPE]);
 
-                        if (product.equals(productType)) {
+                            if (product.equals(productType)) {
 
                             if (tokens[BEATY_PRODUCT_TYPE].equals("LIPSTICK")) {
                                 Lipstick lipstick = new Lipstick(tokens[BEATY_PRODUCT_NAME],

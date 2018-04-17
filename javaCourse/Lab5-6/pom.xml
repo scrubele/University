@@ -55,7 +55,52 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>2.17</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+                <executions>
+                    <execution>
+                        <!-- First step is to disable the default-war build step. -->
+                        <id>default-war</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <!-- Second step is to create an exploded war. Done in prepare-package -->
+                        <id>war-exploded</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                        <configuration>
+                            <webResources>
+                                <resource>
+                                    <directory>src/main/resources/META-INF</directory>
+                                    <targetPath>WEB-INF/classes/META-INF</targetPath>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>**/persistence.xml</include>
+                                    </includes>
+                                </resource>
+                            </webResources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- Last step is to make sure that the war is built in the package
+                            phase -->
+                        <id>custom-war</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>war</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+        <finalName>jaxrs_iotintro</finalName>
     </build>
     <dependencies>
         <dependency>
@@ -79,6 +124,13 @@
             <groupId>org.glassfish.jersey.bundles</groupId>
             <artifactId>jaxrs-ri</artifactId>
             <version>2.26</version>
+        </dependency>
+        <!-- Hibernate dependency as JPA implementer -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.15.Final</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -142,6 +194,7 @@
                 <artifactId>findbugs-maven-plugin</artifactId>
                 <version>3.0.4</version>
             </plugin>
+
         </plugins>
     </reporting>
 

@@ -1,10 +1,14 @@
-com/scrubele/HairProduct.class
+com/scrubele/persistance/dao/AbstractDao.class
+com/scrubele/persistance/dao/IDao.class
+com/scrubele/persistance/dao/BeautyProductDao.class
 com/scrubele/Writer.class
 com/scrubele/LipstickTaste.class
 com/scrubele/CosmeticDepartmentsService.class
+com/scrubele/persistance/dao/BeautyProductDaoImpl.class
 com/scrubele/CosmeticDepartment.class
-com/scrubele/BeatyProduct.class
 com/scrubele/rest/config/JaxRsConfig.class
 com/scrubele/Lipstick.class
 com/scrubele/HairType.class
+com/scrubele/HairProduct.class
+com/scrubele/BeatyProduct.class
 com/scrubele/ProductType.class
